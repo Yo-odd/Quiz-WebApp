@@ -1,0 +1,15 @@
+$color1: #3552F2;
+$color2: #5068F2;
+$color3: #8898F2;
+$color4: #F2F2F2;
+$color5: #262626;
+
+.footer {
+    background-color: $color4;
+    bottom: 0;
+    position: relative;
+  }
+ 
+.active {
+  color: $color3;
+}

@@ -1,0 +1,75 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-climbing-dot" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<div class="mt-5 align-self-center container text-center col-sm-6">
+    <div class="card">
+        <div class="card-header display-4">
+            Sign In
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Fancy meeting ya {{userName.value}} !</h5>
+            <form #signinForm='ngForm' (ngSubmit)="loginUser(signinForm)">
+                <div class="row form-group">
+                    <label class="col-3 text-left" for="exampleFormControlInput1"> User Name:</label>
+                    <input [(ngModel)]="user.userName" #userName='ngModel' type="text" class="col-7 form-control"
+                        id="exampleFormControlInput1" placeholder="Your user name here" name="userName" required
+                        [ngClass]="{'invalid-textbox' : (signinForm.submitted && !signinForm.valid) || (userName.pristine && userName.touched && userName.value ==null) || (userName.dirty && userName.errors) , 
+                        'valid-textbox':(signinForm.submitted && signinForm.valid) || (userName.dirty && !userName.errors) || (userName.pristine && userName.value !=null)}">
+                </div>
+                <div *ngIf="(signinForm.submitted && !signinForm.valid && userName.pristine) || (userName.pristine && userName.touched && userName.value ==null) || (userName.dirty && userName.errors)"
+                    class="col-7 offset-3 alert alert-danger">
+                    <!-- <div *ngIf="userName.errors.required"> -->
+                    Name is required 😐.
+                    <!-- </div> -->
+                </div>
+                <div *ngIf="(signinForm.submitted && signinForm.valid) || (userName.dirty && !userName.errors) || (userName.pristine && userName.value !=null)"
+                    class="col-7 offset-3 alert alert-success">
+                    <!-- <div *ngIf="userName.errors.required"> -->
+                    Looks Good 👍.
+                    <!-- </div> -->
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-3 text-left" for="exampleInputPassword1">Password:</label>
+                    <input [(ngModel)]="user.password" #password='ngModel' type="password" class="col-7 form-control"
+                        id="exampleInputPassword1" placeholder="Password" name="password" required
+                        [ngClass]="{'invalid-textbox' : (signinForm.submitted && !signinForm.valid) || (password.pristine && password.touched) || (password.dirty && password.errors), 
+                        'valid-textbox':(signinForm.submitted && signinForm.valid) || (password.dirty && !password.errors)}">
+                </div>
+
+                <div *ngIf="(signinForm.submitted && !signinForm.valid && password.pristine) || (password.pristine && password.touched) || (password.dirty && password.errors)"
+                    class="col-7 offset-3 alert alert-danger">
+
+                    <!-- <div *ngIf="password.errors.required"> -->
+                    password is required 😑.
+                    <!-- </div> -->
+                </div>
+                <div *ngIf="(signinForm.submitted && signinForm.valid) || (password.dirty && !password.errors)"
+                    class="col-7 offset-3 alert alert-success">
+
+                    <!-- <div *ngIf="password.errors.required"> -->
+                    Looks Good 🙈.
+                    <!-- </div> -->
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-5 text-left"></label>
+                    <button type="submit" value="submit" class="col-2 btn btn-primary float-right">
+                        Submit
+                    </button>
+                    <button type="reset" value="reset" class="col-2 offset-1 btn btn-primary float-right">
+                        Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+            <p class="float-right">not member yet? <a href="" class="text-primary" routerLink="/register"
+                    routerLinkActive="active">register</a> here
+            </p>
+        </div>
+    </div>
+</div>
+<p> {{ res  | json}} </p>
+<router-outlet></router-outlet>

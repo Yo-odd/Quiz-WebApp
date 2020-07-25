@@ -1,0 +1,94 @@
+$color1: #3552F2;
+$color2: #5068F2;
+$color3: #8898F2;
+$color4: #F2F2F2;
+$color5: #262626;
+
+.invalid-textbox {
+    border: 1px solid red;
+    border-left: 5px solid red;
+}
+.valid-textbox {
+    border: 1px solid green;
+    border-left: 5px solid green;
+}
+.jumbotron,.card-header{
+    color: $color4;
+    background-color: $color3;
+}
+.form-control:hover,.custom-select:hover,.custom-card:hover{
+    border-color: $color1;
+    border-top-right-radius: 1rem;
+    border-width: medium;
+    box-shadow: 10px 10px 10px $color5;
+}
+
+.invalid-form-control{
+    border-color: red;
+    border-top-right-radius: 1rem;
+    border-width: medium;
+    box-shadow: 10px 10px 10px $color5;
+}
+
+
+.txt-Q-4:hover , .active {
+    color: $color3;
+}
+
+.txt-Q-4 {
+    color: $color4;
+}
+.txt-Q-5,.card-text {
+    color: $color5;
+}
+
+
+.txt-Q-3,.card-title{
+    color: $color3;
+}
+
+.txt-Q-3:hover{
+    color: $color3;
+}
+
+
+.btn-Q-3:hover {
+    color: $color3;
+}
+
+.btn-Q-3 {
+    color: $color4;
+}
+
+.btn-outline-Q-3:hover {
+    background-color: $color4;
+    border-color: $color4;
+}
+
+.btn-outline-Q-3 {
+    // background-color: $color3;
+    border-color: $color4;
+}
+
+
+.btn-Q-add:hover {
+    color: $color4;
+}
+
+.btn-Q-add {
+    color: $color3;
+}
+
+.btn-outline-Q-add:hover {
+    background-color: $color3;
+    border-color: $color3;
+}
+
+.btn-outline-Q-add {
+    // background-color: $color3;
+    border-color: $color3;
+}
+
+.card-columns {
+    column-count: 3;
+  }

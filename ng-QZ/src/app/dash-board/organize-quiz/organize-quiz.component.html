@@ -1,0 +1,187 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-climbing-dot" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<div class="mt-5 container-fluid text-center">
+    <div class="card">
+        <div class="card-header display-4">
+            Organize The Quiz Created
+        </div>
+        <div class="card-body row input-group input-group-lg">
+            <select class="custom-select txt-Q-3" placeholder="Choose Quiz to Edit" [(ngModel)]="selected_title">
+                <option disabled data-default>...Choose Quiz to Edit...</option>
+                <option [ngValue]="qtitle"
+                    *ngFor="let qtitle of quizTitleArray;let qtIndex= index;trackBy:customQZTrackBy">
+                    {{qtitle.quizTitle}}
+                </option>
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-Q-add btn-outline-Q-add" (click)="organizeQuiz()" type="button">Select <i
+                        class="far fa-edit"></i></button>
+                <button class="btn btn-Q-add btn-outline-Q-add" (click)="revokeQuiz()" type="button">Remove <i
+                        class="far fa-edit"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5 container-fluid text-center">
+    <div class="card">
+        <div class="card-header display-4">
+            Edit Quiz
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Quiz Title: {{quiz.quizTitle}}</h5>
+            <form #createQuizForm='ngForm' (ngSubmit)="sendQuiz(createQuizForm)" validate>
+                <!-- input field template -->
+                <!-- <div class="row form-group">
+                    <div class="col-2 text-center">
+                        <label class="py-1">Quiz Title :</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="col-8" #quizTitle class="form-control" name="quizTitle">
+                    </div>
+                </div> -->
+
+                <div class="row form-group mb-5">
+                    <div class="col-md-2 text-center">
+                        <label class="py-1">Quiz Title :</label>
+                    </div>
+                    <div class="col-md input-group-append">
+                        <input type="text" placeholder="Enter Unique Quiz Title" class="col" class="form-control"
+                            name="quizTitle" [(ngModel)]="quiz.quizTitle" #quizTitle="ngModel" required
+                            [ngClass]="{'invalid-form-control':(quizTitle.dirty && quizTitle.invalid) || (createQuizForm.submitted && quizTitle.errors)}"
+                            readonly>
+                        <span class="mx-2 col-2 p-1 badge-danger rounded"
+                            *ngIf="(quizTitle.dirty && quizTitle.invalid) || (createQuizForm.submitted && quizTitle.errors)">
+                            <span *ngIf="quizTitle.errors['required']">
+                                please Add an Answer
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+
+
+                <div class="jumbotron mt-5 mb-5">
+                    <div class="row container-fluid mb-4">
+                        <div class="col-md-2 text-center">
+                            <label class="py-1">Search Users :</label>
+                        </div>
+                        <div class="col-md input-group-append">
+                            <input type="text" placeholder="Search users" class="col"
+                                class="form-control" name="searchText" [(ngModel)]="searchText" #userquery="ngModel"
+                                value=".">
+                        </div>
+                    </div>
+
+                    <!-- <table class="table table-hover">
+                        <tbody>
+                            <tr
+                                *ngFor="let item of userArray| userfilter: searchText;let uIndex= index;trackBy:customUTrackBy">
+                                <td>{{item.userName}}</td>
+                                <td>
+                                    <div type="button" class="mx-2 btn btn-Q-3 btn-outline-Q-3 float-right"
+                                        (click)="addQuestionByIndex( (uIndex+1),item )">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div type="button" class="mx-2 btn btn-Q-3 btn-outline-Q-3 float-right"
+                                        (click)="removeQuestionByIndex(uIndex,item)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                    <div class="offset-md-2 container form-group">
+                        <div class="col-md input-group-append my-2"
+                            *ngFor="let item of userArray| userfilter: searchText;let uIndex= index;trackBy:customUTrackBy">
+                            <input class="form-control col p-2" name="user-{{uIndex}}" [(ngModel)]="item.userName"
+                                #editQ="ngModel" readonly>
+
+                            <div type="button" *ngIf="!isHidden[uIndex]"
+                                class="mx-2 btn btn-Q-3 btn-outline-Q-3 float-right"
+                                (click)="addQuestionByIndex( (uIndex+1),item )">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div type="button" *ngIf="!isHidden[uIndex]"
+                                class="mx-2 btn btn-Q-3 btn-outline-Q-3 float-right"
+                                (click)="addQuestionByIndex_lead( (uIndex+1),item )">
+                                <i class="fas fa-glasses"></i>
+                            </div>
+                            <div type="button" class="mx-2 btn btn-Q-3 btn-outline-Q-3 float-right"
+                                (click)="removeQuestionByIndex(uIndex,item)">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!------------------ submit reset --------------------->
+                <div class="row form-group">
+                    <!-- <button (click)="addQuestionByIndex(0)" type="button" value="submit"
+                        class="p-1 offset-md-1 mb-2 col-md-1 btn btn-Q-add btn-outline-Q-add float-right">
+                        Add Question
+                    </button> -->
+                    <label class="col-6 offset-md-2 text-left"></label>
+                    <button type="submit" value="submit" class="mb-2 col-md-1 btn btn-outline-primary float-right">
+                        <!-- <button [disabled]="!createQuizForm.valid" type="submit" value="submit" class="mb-2 col-md-1 btn btn-outline-primary float-right"> -->
+                        Submit
+                    </button>
+                    <button type="reset" value="reset"
+                        class="mb-2 col-md-1 offset-md-1 btn btn-outline-danger float-right">
+                        Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p> {{ result | json}} </p>
+<!-- <p> {{ qaList[0]['question'].questionContent  | json}} </p> -->
+
+<p> {{ res | json}} </p>
+<br>
+<!-- <p> {{ quizTitleArray  | json}} </p> -->
+<!-- <router-outlet></router-outlet> -->
+<div class="mt-5 container-fluid text-center">
+    <div class="card">
+        <div class="card-header display-4">
+            Quiz Insights
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Ongoing Quizzes</h5>
+
+            <!------------------ submit reset --------------------->
+            <div class="row form-group">
+                <!-- <button (click)="addQuestionByIndex(0)" type="button" value="submit"
+                    class="p-1 offset-md-1 mb-2 col-md-1 btn btn-Q-add btn-outline-Q-add float-right">
+                    Add Question
+                </button> -->
+                <label class="col-8 offset-md-2 text-left"></label>
+                <button type="submit" (click)="fetchQuizMetaData()" value="button"
+                    class="p-1 mb-2 col-md-1 btn btn-Q-add btn-outline-Q-add float-right">
+                    Reload Data <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="jumbotron mt-5 mb-5">
+                <div class="card-columns">
+                    <div class="card custom-card" *ngFor="let card of quizInsights">
+                        <div class="card-body">
+                            <div class="card-title h5">{{card.quiz_attendee}}</div>
+                            <p class="card-text">Role: {{card.role}}</p>
+                            <p class="card-text text-left">Pending Quizzes by attendee:</p>
+                            <p class="card-text" *ngFor="let plist of card.quizTitle">{{plist}}</p>
+                            <p class="card-text"><small class="text-muted">Last Updated at: {{card.updatedAt}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <p> {{ quizInsights | json}} </p> -->

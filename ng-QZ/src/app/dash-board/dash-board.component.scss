@@ -1,0 +1,36 @@
+$color1: #3552F2;
+$color2: #5068F2;
+$color3: #8898F2;
+$color4: #F2F2F2;
+$color5: #262626;
+
+.nav-Q-4{
+    background: $color4;
+}
+
+.txt-Q-4:hover , .active {
+    color: $color1;
+    background-color: $color4;
+}
+
+.txt-Q-4 {
+    color: $color3;
+}
+
+.btn-Q-3:hover {
+    color: $color4;
+}
+
+.btn-Q-3 {
+    color: $color3;
+}
+
+.btn-outline-Q-3:hover {
+    background-color: $color3;
+    border-color: $color3;
+}
+
+.btn-outline-Q-3 {
+    // background-color: $color3;
+    border-color: $color3;
+}

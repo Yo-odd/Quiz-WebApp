@@ -1,0 +1,64 @@
+<!-- <p>attend-quiz works!</p> -->
+<!-- <form #submitQuizForm='ngForm' (ngSubmit)="submitQuiz(submitQuizForm)"> -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-climbing-dot" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+<div class="mt-5 container-fluid text-center">
+
+    <div class="card">
+        <div class="card-header display-4">
+            All the best :)
+        </div>
+        <div class="card-body display-4 text-center">
+            <div class="row form-group mb-5">
+                <div class="col-md-4">
+                    <label class="py-1">Quiz Title :</label>
+                </div>
+                <div class="col-md input-group-append">
+                    <!-- <input type="text" placeholder="Enter Unique Quiz Title" class="col h2" class="form-control"
+                        name="quizTitle" [(ngModel)]="quiz.quizTitle" #quizTitle="ngModel" readonly> -->
+                    {{quiz.quizTitle}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jumbotron mt-5 mb-5">
+    <div class="offset-md-2 container form-group"
+        *ngFor="let qes of quiz.quizData;let qIndex= index;trackBy:customQTrackBy">
+        <!-- <div class="col-md-2 text-center"> -->
+        <label class="py-1 h5 font-weight-light">Question {{qIndex+1}} :</label>
+        <!-- </div> -->
+        <div class="input-group mb-2">
+            <div class="input-group-text col">
+                <i class="fas fa-question input-group-prepend fa-lg mx-2"></i>
+                <input class="px-4 ml-3 txt-Q-5 h5 form-control col" name="quiz-{{qIndex}}"
+                    [(ngModel)]="qes.question.questionContent" #editQ="ngModel" readonly>
+            </div>
+        </div>
+        <div class="input-group" *ngFor="let ans of qes.answers;let aIndex= index;trackBy:customATrackBy">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="radio" name="ans_of_question-{{qIndex}}" id="ans-{{aIndex}}"
+                        (click)="addSubmit_Ans( qIndex,qes,aIndex,ans)" (ng-value)="ans.answerContent">
+                </div>
+            </div>
+            <input type="text" [(ngModel)]="ans.answerContent" class="form-control" readonly>
+            <!-- <input type="text" class="form-control" [(ngModel)]="" #editQ="ngModel" readonly> -->
+        </div>
+    </div>
+</div>
+
+<!------------------ submit reset --------------------->
+<div class="row form-group">
+    <button (click)="submitQuiz()" type="button" value="submit"
+        class="p-1 offset-md-1 mb-2 col-md-1 btn btn-Q-add btn-outline-Q-add float-right">
+        Submit Quiz
+    </button>
+</div>
+<!-- </form> -->
+<p> {{ quiz| json}} </p>
+<p> {{ res | json}} </p>
+<hr>
+<!-- <p> {{ res2 | json}} </p> -->
+<p> {{ result | json}} </p>

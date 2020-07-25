@@ -1,0 +1,108 @@
+<nav class="navbar shadow  navbar-expand-lg nav-Q-4 fixed-top">
+  <a class="navbar-brand"><img src="favicon.ico" width="30" height="30" class="txt-Q-4 d-inline-block align-top" alt="">
+    uiz
+  </a>
+
+  <button class="navbar-toggler btn-Q-3 btn-outline-Q-3" type="button" data-toggle="collapse"
+    data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+    <!-- <span class="txt-Q-4 navbar-toggler-icon"></span> -->
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav mr-auto">
+      <a *ngIf="dashb == true" class="nav-item nav-link" routerLink="/dashboard"
+        routerLinkActive="active">({{user.userName}})
+        Dashboard</a>
+      <li class="nav-item dropdown txt-Q-4">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
+          Landing Page
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item btn-Q-3 btn-outline-Q-3" routerLink="quiz" routerLinkActive="active">Quiz</a>
+          <a class="dropdown-item btn-Q-3 btn-outline-Q-3" routerLink="result" routerLinkActive="active">Result</a>
+        </div>
+      </li>
+      <a *ngIf="leadb == true" class="nav-item nav-link txt-Q-4" routerLink="leadBoard"
+        routerLinkActive="active">({{user.userName}})
+        Lead Board</a>
+      <!-- <a class="nav-item nav-link" routerLink="/landingpage" routerLinkActive="active">Landing Page</a> -->
+    </div>
+
+    <!----------------- Log Out Button--------------->
+    <div class="nav-link btn-group mr-3 float-right">
+      <button type="button" class=" px-2 btn btn-Q-3 btn-outline-Q-3">hey {{user.userName}}!</button>
+      <button type="button" class=" px-2 btn btn-Q-3 btn-outline-Q-3 dropdown-toggle dropdown-toggle-split"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <!-- <span class="sr-only">wtf</span> -->
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item btn-Q-3 btn-outline-Q-3" (click)=signout()><i class="fas fa-sign-out-alt"></i> Sign
+          Out</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item btn-Q-3 btn-outline-Q-3" href=""><i class="fas fa-user-cog"></i> User Settings</a>
+      </div>
+    </div>
+  </div>
+  <!-- <button class=" px-2 btn-Q-3 btn-Q-3-Q btn-Q-3-outline-Q-lp">Sign Out</button> -->
+
+
+
+</nav>
+
+
+
+<div class="my-5">...</div>
+<div class="container-fluid" *ngIf="no_role">
+  <div class="media m-5">
+    <i class="fas fa-user-tag fa-7x mr-3"></i>
+    <div class="media-body">
+      <h5 class="mt-0">Well This is Awkward...</h5>
+      The Admin has not assigned role to you yet, please resolve the issue by contacting the admin.<br>Have a nice day
+      :)
+    </div>
+  </div>
+  <div class="row container-fluid mb-4">
+    <div class="col-md-2 text-center">
+      <label class="py-1">Search Admin :</label>
+    </div>
+    <div class="col-md input-group-append">
+      <input type="text" placeholder="Press '.' to extract all users" class="col" class="form-control" name="searchText"
+        [(ngModel)]="searchText" #userquery="ngModel" value=".">
+    </div>
+    <div class="offset-md-2 container form-group">
+      <div class="col-md input-group-append my-2"
+        >
+        <!-- <input class="form-control col p-2 m-2" name="user-{{uIndex}}" [(ngModel)]="item.userName" #editQ="ngModel"
+          readonly>
+        <input class="form-control col p-2 m-2" name="user-{{uIndex}}" [(ngModel)]="item.email" #editQ="ngModel"
+          readonly> -->
+
+        <div class="accordion card-columns mb-2" id="accordionExample">
+          <div class="card" *ngFor="let item of userArray| userfilter: searchText;let uIndex= index;trackBy:customUTrackBy">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn txt-Q-4" name="user-{{uIndex}}" type="button" data-toggle="collapse" data-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  {{item.userName}}
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <a class="btn txt-Q-4" href="mailto:{{item.email}}">{{item.email}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5">
+
+  <router-outlet></router-outlet>
+</div>

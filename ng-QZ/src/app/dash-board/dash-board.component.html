@@ -1,0 +1,61 @@
+<nav class="navbar shadow  navbar-expand-lg nav-Q-4 fixed-top">
+    <a class="navbar-brand"><img src="favicon.ico" width="30" height="30" class="txt-Q-4 d-inline-block align-top"
+            alt="">
+        uiz</a>
+
+    <button class="navbar-toggler btn-Q-3 btn-outline-Q-3" type="button" data-toggle="collapse"
+        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+        <!-- <span class="txt-Q-4 navbar-toggler-icon"></span> -->
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a *ngIf="dashb == true" class="nav-link dropdown-toggle txt-Q-4" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
+                    ({{user.userName}})
+                    Dashboard
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item btn-Q-3 btn-outline-Q-3" routerLink="CreateQuiz"
+                        routerLinkActive="active">Create Quiz</a>
+                    <a class="dropdown-item btn-Q-3 btn-outline-Q-3" routerLink="ResultsAnalysis"
+                        routerLinkActive="active">Results Analysis</a>
+                    <a class="dropdown-item btn-Q-3 btn-outline-Q-3" routerLink="EditQuiz"
+                        routerLinkActive="active">Edit Quiz</a>
+                    <a class="dropdown-item btn-Q-3 btn-outline-Q-3" routerLink="OrganizeQuiz"
+                        routerLinkActive="active">Organize Quiz</a>
+                </div>
+            </li>
+            <a class="nav-item nav-link" routerLink="/landingpage" routerLinkActive="active">Landing Page</a>
+            <!-- <a class="nav-item nav-link" routerLink="/landingpage" routerLinkActive="active">Landing Page</a> -->
+        </div>
+
+        <!----------------- Log Out Button--------------->
+        <div class="nav-link btn-group mr-3 float-right">
+            <button type="button" class=" px-2 btn btn-Q-3 btn-outline-Q-3">hey {{user.userName}}!</button>
+            <button type="button" class=" px-2 btn btn-Q-3 btn-outline-Q-3 dropdown-toggle dropdown-toggle-split"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- <span class="sr-only">wtf</span> -->
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item btn-Q-3 btn-outline-Q-3" (click)=signout()><i class="fas fa-sign-out-alt"></i>
+                    Sign
+                    Out</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item btn-Q-3 btn-outline-Q-3" href=""><i class="fas fa-user-cog"></i> User
+                    Settings</a>
+            </div>
+        </div>
+    </div>
+    <!-- <button class=" px-2 btn btn-Q-3 btn-outline-Q-3">Sign Out</button> -->
+
+
+
+</nav>
+
+<div class="mt-1">...</div>
+<div class="container-fluid mt-5">
+    <router-outlet></router-outlet>
+</div>

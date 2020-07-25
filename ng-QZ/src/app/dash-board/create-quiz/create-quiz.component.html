@@ -1,0 +1,191 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-climbing-dot" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<div class="mt-5 container-fluid text-center">
+    <div class="card">
+        <div class="card-header display-4">
+            Create Quiz
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Quiz Title: {{quiz.quizTitle}}</h5>
+            <form #createQuizForm='ngForm' (ngSubmit)="createQuiz(createQuizForm)" validate>
+                <!-- input field template -->
+                <!-- <div class="row form-group">
+                    <div class="col-2 text-center">
+                        <label class="py-1">Quiz Title :</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="col-8" #quizTitle class="form-control" name="quizTitle">
+                    </div>
+                </div> -->
+
+                <div class="row form-group mb-5">
+                    <div class="col-md-2 text-center">
+                        <label class="py-1">Quiz Title :</label>
+                    </div>
+                    <div class="col-md input-group-append">
+                        <input type="text" placeholder="Enter Unique Quiz Title" class="col"
+                            class="form-control" name="quizTitle" [(ngModel)]="quiz.quizTitle"
+                            #quizTitle="ngModel" 
+                                required
+                                [ngClass]="{'invalid-form-control':(quizTitle.dirty && quizTitle.invalid) || (createQuizForm.submitted && quizTitle.errors)}">
+                            <span class="mx-2 col-2 p-1 badge-danger rounded" *ngIf="(quizTitle.dirty && quizTitle.invalid) || (createQuizForm.submitted && quizTitle.errors)">
+                                <span *ngIf="quizTitle.errors['required']">
+                                    please Add an Answer
+                                </span>
+                            </span>
+                    </div>
+                </div>
+
+                <div class="row form-group mb-5">
+                    <div class="col-md-2 text-center">
+                        <label class="py-1">Quiz DeadLine :</label>
+                    </div>
+                    <div class="col-md mb-5">
+                        <input type="date" class="col-8"  class="form-control" name="quizExp"
+                            [(ngModel)]="quiz.quizExp"
+                            #quizExp="ngModel" 
+                                required
+                                [ngClass]="{'invalid-form-control':(quizExp.dirty && quizExp.invalid) || (createQuizForm.submitted && quizExp.errors)}">
+                            <span class="mx-2 col-2 p-1 badge-danger rounded" *ngIf="(quizExp.dirty && quizExp.invalid) || (createQuizForm.submitted && quizExp.errors)">
+                                <span *ngIf="quizExp.errors['required']">
+                                    please Add an Answer
+                                </span>
+                            </span>
+                    </div>
+                    <!-- </div>
+                <div class="row form-group"> -->
+                    <div class="col-md-2 text-center">
+                        <label class="py-1">Quiz Time limit :</label>
+                    </div>
+                    <div class="col-md">
+                        <input type="time" class="col-8"  class="form-control" name="quizTime"
+                            [(ngModel)]="quiz.quizTime"
+                            #quizTime="ngModel" 
+                                required
+                                [ngClass]="{'invalid-form-control':(quizTime.dirty && quizTime.invalid) || (createQuizForm.submitted && quizTime.errors)}">
+                            <span class="mx-2 col-2 p-1 badge-danger rounded" *ngIf="(quizTime.dirty && quizTime.invalid) || (createQuizForm.submitted && quizTime.errors)">
+                                <span *ngIf="quizTime.errors['required']">
+                                    please Add an Answer
+                                </span>
+                            </span>
+                    </div>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-primary float-right"
+                            (click)="addQuestionByIndex(0)">
+                            <i class="fas fa-plus"></i>
+                            add Question
+                        </button>
+                    </div>
+                </div> 
+                <br>-->
+
+                <div class="jumbotron mt-5 mb-5" *ngFor="let item of qaList;let qIndex= index;trackBy:customQTrackBy">
+                    <div class="row form-group">
+                        <div class="col-md-2 text-center">
+                            <label class="py-1">Quiz question {{(qIndex+1)}} :</label>
+                        </div>
+                        <div class="col-md input-group-append">
+                            <input class="form-control col" placeholder="Enter Question" name="questions-{{qIndex}}"
+                                [(ngModel)]="item.question.questionContent" #editQ="ngModel" 
+                                required
+                                [ngClass]="{'invalid-form-control':(editQ.dirty && editQ.invalid) || (createQuizForm.submitted && editQ.errors)}">
+
+                            <div type="button" class="mx-2 btn btn-Q-3 btn-outline-Q-3 float-right"
+                                (click)="addQuestionByIndex( (qIndex+1) )">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div type="button" class="mx-2 btn btn-Q-3 btn-outline-Q-3 float-right"
+                                (click)="removeQuestionByIndex(qIndex)">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                            <span class="col-2 p-1 badge-danger rounded" *ngIf="(editQ.dirty && editQ.invalid) || (createQuizForm.submitted && editQ.errors)">
+                                <span *ngIf="editQ.errors['required']">
+                                    please Add Question
+                                </span>
+                            </span>
+
+                            <button *ngIf="item.answers.length==0" type="button"
+                                class="mx-2 btn btn-Q-3 btn-outline-Q-3 float-right" (click)="addOptions(qIndex)">
+                                <i class="fas fa-plus"></i>
+                                add Options
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row form-group"
+                        *ngFor="let ans of item.answers;let aIndex= index;trackBy:customATrackBy">
+                        <div class="col-1"></div>
+                        <div class="col-md-2 text-center">
+                            <label class="py-1">Quiz option {{(aIndex + 1)}}:</label>
+                        </div>
+                        <div class="col-md input-group-append">
+                            <input type="text" placeholder="Enter options" #quizTitle class="form-control col"
+                                name="questions-{{qIndex}}-{{aIndex}}" [(ngModel)]="ans.answerContent" #editO="ngModel"
+                                required
+                                [ngClass]="{'invalid-form-control':(editO.dirty && editO.invalid) || (createQuizForm.submitted && editO.errors)}">
+                            <button (click)="addOptions(qIndex)" class="btn btn-Q-3 btn-outline-Q-3 mx-2"
+                                type="button"><i class="fas fa-plus"></i>
+                            </button>
+                            <button class="btn btn-Q-3 btn-outline-Q-3 mx-2" type="button"
+                                (click)="removeOptions(item.answers, aIndex)"><i class="fas fa-minus"></i></button>
+                            <span class="col-2 p-1 badge-danger rounded" *ngIf="(editO.dirty && editO.invalid) || (createQuizForm.submitted && editO.errors)">
+                                <span *ngIf="editO.errors['required']">
+                                    please Add Option
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-1"></div>
+                        <div class="col-md-2 text-center">
+                            <label class="py-1">Quiz Answer :</label>
+                        </div>
+                        <div class="col-md input-group-append">
+                            <input type="text" placeholder="Enter Answer (Must be an exact option)"
+                                #quizTitle class="form-control col" name="answer-{{qIndex}}" [(ngModel)]="item.quizAns"
+                                #editA="ngModel" 
+                                required
+                                [ngClass]="{'invalid-form-control':(editA.dirty && editA.invalid) || (createQuizForm.submitted && editA.errors)}">
+                            <span class="mx-2 col-2 p-1 badge-danger rounded" *ngIf="(editA.dirty && editA.invalid) || (createQuizForm.submitted && editA.errors)">
+                                <span *ngIf="editA.errors['required']">
+                                    please Add an Answer
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!------------------ submit reset --------------------->
+                <div class="row form-group">
+                    <button (click)="addQuestionByIndex(0)" type="button" value="submit"
+                        class="p-1 offset-md-1 mb-2 col-md-1 btn btn-Q-add btn-outline-Q-add float-right">
+                        Add Question
+                    </button>
+                    <label class="col-6 text-left"></label>
+                    <button  type="submit" value="submit" class="mb-2 col-md-1 btn btn-outline-primary float-right">
+                    <!-- <button [disabled]="!createQuizForm.valid" type="submit" value="submit" class="mb-2 col-md-1 btn btn-outline-primary float-right"> -->
+                        Submit
+                    </button>
+                    <button type="reset" value="reset"
+                        class="mb-2 col-md-1 offset-md-1 btn btn-outline-danger float-right">
+                        Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p> {{ qaList | json}} </p>
+<!-- <p> {{ qaList[0]['question'].questionContent  | json}} </p> -->
+<p> {{ res | json}} </p>
+<br>
+<p> {{ res2  | json}} </p>
+<!-- <router-outlet></router-outlet> -->

@@ -1,0 +1,46 @@
+<div class="mt-5 container-fluid text-center">
+    <div class="card">
+        <div class="card-header display-4">
+            Pending Quizzes
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Ongoing Quizzes</h5>
+
+            <!------------------ submit reset --------------------->
+            <div class="row form-group">
+                <!-- <button (click)="addQuestionByIndex(0)" type="button" value="submit"
+                    class="p-1 offset-md-1 mb-2 col-md-1 btn btn-Q-add btn-outline-Q-add float-right">
+                    Add Question
+                </button> -->
+                <label class="col-8 offset-md-2 text-left"></label>
+                <button type="submit" (click)="fetchQuizMetaData()" value="button"
+                    class="p-1 mb-2 col-md-1 btn btn-Q-add btn-outline-Q-add float-right">
+                    Reload Data <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="jumbotron mt-5 mb-5">
+                <div class="card-columns">
+                    <div class="card custom-card" *ngFor="let card of quizInsights;let qIndex= index;trackBy:customQTrackBy">
+                        <div class="card-body">
+                            <div class="card-title h5">{{card.quizTitle}}</div>
+                            <p class="card-text">Quiz Duration: {{card.quizTime}}</p>
+                            <p class="card-text">Quiz Id: {{card.pending_quiz_id}}</p>
+                            <p class="card-text">Creator: {{card.creator}} &nbsp; &nbsp; Expires at: {{card.quizExp}}
+                            </p>
+                            <p class="card-text"><small class="text-muted">Last Updated at: {{card.updatedAt}}</small>
+                            </p>
+                            <a (click)="attempt_Quiz(qIndex)" type="button" value="submit"
+                                class="txt-Q-3 float-right m-2" name="quiz-{{qIndex}}">
+                                Attempt Quiz
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p> {{ quizInsights  | json}} </p>
+<p> {{ res  | json}} </p>
+<!-- <p> {{ res2  | json}} </p> -->

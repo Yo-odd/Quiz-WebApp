@@ -1,0 +1,76 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-climbing-dot" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<div class="mt-5 container-fluid text-center">
+    <div class="card">
+        <div class="card-header display-4">
+            Quiz Analysis
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Spectate Quizzes</h5>
+
+            <!------------------ submit reset --------------------->
+            <div class="row form-group">
+                <!-- <button (click)="addQuestionByIndex(0)" type="button" value="submit"
+                    class="p-1 offset-md-1 mb-2 col-md-1 btn btn-Q-add btn-outline-Q-add float-right">
+                    Add Question
+                </button> -->
+                <label class="col-8 offset-md-2 text-left"></label>
+                <button type="submit" (click)="fetchQuizMetaData()" value="button"
+                    class="p-1 mb-2 col-md-1 btn btn-Q-add btn-outline-Q-add float-right">
+                    Reload Data <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="jumbotron mt-5 mb-5">
+                <div class="row container-fluid mb-4">
+                    <div class="col-md-2 text-center">
+                        <label class="py-1">Search attendee :</label>
+                    </div>
+                    <div class="col-md input-group-append">
+                        <input type="text" placeholder="Search attendee" class="col"
+                            class="form-control" name="searchText" [(ngModel)]="searchText" #userquery="ngModel"
+                            value=".">
+                    </div>
+                </div>
+                <div class="card-columns">
+                    <div class="card" style="column-break-inside: avoid"
+                        *ngFor="let card of quizInsights| userResult: searchText ;let qIndex= index;trackBy:customQTrackBy">
+
+                        <div class="card-header mycard-header" style="font-size: 2rem;">{{card.quiz_attendee}}</div>
+                        <div class="card-body">
+                            <blockquote class="blockquote text-right">
+                                <div class="card-title lead" style="font-size: 4rem;">{{card.quizTitle}}</div>
+                                <cite class="card-text lead blockquote-footer">Attempted at:
+                                    {{card.quiz_attended_Time}}</cite>
+                            </blockquote>
+
+                            <div class="d-flex justify-content-around my-4">
+                                <ul class="card-text h5 list-inline">
+                                    <li class="list-inline-item ">Result: </li>
+                                    <li class="list-inline-item badge badge-success text-wrap">
+                                        {{card.marks}}/{{card.total}}</li>
+                                    <li class="ml-5 list-inline-item text-right">False Answers: </li>
+                                    <li class=" list-inline-item badge badge-danger text-wrap">{{card.total-card.marks}}
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="card-text">Creator: {{card.creator}} &nbsp; &nbsp; Expires at: {{card.quizExp}}
+                            </p>
+                            <p class="card-text"><small class="text-muted">Last Updated at: {{card.updatedAt}}</small>
+                            </p>
+                            <a (click)="attempt_Quiz(qIndex)" type="button" value="submit"
+                                class="txt-Q-3 float-right m-2" name="quiz-{{qIndex}}">
+                                View Result
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p> {{ quizInsights  | json}} </p>
+<p> {{ res  | json}} </p>
+<!-- <p> {{ res2  | json}} </p> -->

@@ -49,11 +49,26 @@ So this is the mini project i was doing during my internship. (also worth mentio
 
 ### Admin Dashboard...
 <p float="left">
-  <img alt="Angular" src="QuizSnaps/create_Quiz.jpg" width="70%"> <br/><br/><br/><br/><br/>
+  <img alt="Angular" src="QuizSnaps/create_Quiz.jpg" width="70%"><hr/> <br/><br/><br/>
  
-  <img alt="nodeJS" src="QuizSnaps/Edit_Quiz.png" width="70%"> <br/><br/><br/><br/><br/>
+  <img alt="nodeJS" src="QuizSnaps/Edit_Quiz.png" width="70%"><hr/> <br/><br/><br/>
  
-  <img alt="nodeJS" src="QuizSnaps/Organize_Quiz.png" width="70%"> <br/><br/><br/><br/><br/>
+  <img alt="nodeJS" src="QuizSnaps/Organize_Quiz.png" width="70%"><hr/> <br/><br/><br/>
  
-  <img alt="nodeJS" src="QuizSnaps/Result_analysis.png" width="70%"> <br/><br/><br/><br/><br/>
+  <img alt="nodeJS" src="QuizSnaps/Result_analysis.png" width="70%"> <br/><br/><br/>
+</p>
+
+### Lead Dashboard...
+The team lead can analyze overall performances of team members in asigned quizzes
+<p float="left">
+  <img alt="Angular" src="QuizSnaps/lead_QA.png" width="70%"> <br/><br/><br/>
+</p>
+
+### User Landing Page...
+<p float="left">
+  <img alt="Angular" src="QuizSnaps/User_ongoing_Quiz.png" width="70%"><hr/> <br/><br/><br/>
+ 
+  <img alt="nodeJS" src="QuizSnaps/User_attempt_Quiz.png" width="70%"><hr/> <br/><br/><br/>
+ 
+  <img alt="nodeJS" src="QuizSnaps/User_Quiz_Result.png" width="70%"> <br/><br/><br/>
 </p>

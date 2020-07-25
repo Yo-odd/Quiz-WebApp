@@ -15,23 +15,28 @@ So this is the mini project i was doing during my internship. (also worth mentio
   <img alt="Angular" src="sticks/button_angular.png">
  </a>
  
- <a href="https://nodejs.org/en/download/">
-  <img alt="Angular" src="sticks/button_nodejs.png">
+ <a href="https://nodejs.org/en/download">
+  <img alt="nodeJS" src="sticks/button_nodejs.png">
  </a>
  
- <a href="https://www.npmjs.com/package/angular">
-  <img alt="Angular" src="sticks/button_mongodb.png">
+ <a href="https://www.mongodb.com/try/download/community">
+  <img alt="MongoDB" src="sticks/button_mongodb.png">
  </a>
- <a href="https://www.npmjs.com/package/angular">
-  <img alt="Angular" src="sticks/button_mongoose.png">
+ 
+ <a href="https://www.npmjs.com/package/mongoose">
+  <img alt="Mongoose" src="sticks/button_mongoose.png">
  </a>
- <a href="https://www.npmjs.com/package/angular">
-  <img alt="Angular" src="sticks/button_express-js.png">
+ 
+ <a href="https://www.npmjs.com/package/express">
+  <img alt="Express" src="sticks/button_express-js.png">
  </a>
- <a href="https://www.npmjs.com/package/angular">
-  <img alt="Angular" src="sticks/button_jwt.png">
+ 
+ <a href="https://www.npmjs.com/package/jsonwebtoken">
+  <img alt="Jason Web Tokens" src="sticks/button_jwt.png">
  </a>
- <a href="https://www.npmjs.com/package/angular">
-  <img alt="Angular" src="sticks/button_moment-js.png">
+ 
+ <a href="https://momentjs.com">
+  <img alt="moomentJS" src="sticks/button_moment-js.png">
  </a>
+ 
 </p>

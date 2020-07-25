@@ -44,3 +44,16 @@ So this is the mini project i was doing during my internship. (also worth mentio
 
 ## Here's some sneek peaks from the packages...
 
+### Common Log-in module protected by auth-Guard services 
+<img alt="Angular" src="QuizSnaps/login.jpg" width="70%">
+
+### Admin Dashboard...
+<p float="left">
+  <img alt="Angular" src="QuizSnaps/create_Quiz.jpg" width="70%"> <br/><br/><br/><br/><br/>
+ 
+  <img alt="nodeJS" src="QuizSnaps/Edit_Quiz.png" width="70%"> <br/><br/><br/><br/><br/>
+ 
+  <img alt="nodeJS" src="QuizSnaps/Organize_Quiz.png" width="70%"> <br/><br/><br/><br/><br/>
+ 
+  <img alt="nodeJS" src="QuizSnaps/Result_analysis.png" width="70%"> <br/><br/><br/><br/><br/>
+</p>

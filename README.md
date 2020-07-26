@@ -43,7 +43,7 @@ So this is the mini project i was doing during my internship. (also worth mentio
  
 </p>
 
-## Here's some sneek peaks from the Project...
+## Here's some sneak peeks from the Project...
 
 ### Common Log-in module protected by auth-Guard services 
 <img alt="Angular" src="QuizSnaps/login.jpg" width="70%">

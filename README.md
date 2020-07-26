@@ -66,10 +66,13 @@ The team lead can analyze overall performances of team members in asigned quizze
 </p>
 
 ### User Landing Page...
-<p float="left">
+
+#### ongoing quizzes
   <img alt="Angular" src="QuizSnaps/User_ongoing_Quiz.png" width="70%"><hr/> <br/><br/><br/>
- 
+
+#### Quiz attempt
   <img alt="nodeJS" src="QuizSnaps/User_attempt_Quiz.png" width="70%"><hr/> <br/><br/><br/>
- 
+
+#### Quiz Results
   <img alt="nodeJS" src="QuizSnaps/User_Quiz_Result.png" width="70%"> <br/><br/><br/>
-</p>
+

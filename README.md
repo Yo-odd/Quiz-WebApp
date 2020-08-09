@@ -1,5 +1,5 @@
 # Quiz-WebApp
-The basic mini project for organizing and appearing for Quizzes<br/>
+The basic mini project with Angular, nodeJS for organizing and appearing for Quizzes<br/>
 _(I understand it is cumbersome to demonstrate the project through images, will update the readme with screen grab of project, probably will share the youtube link)_
 
 Contact :yogeshcod@gmail.com
